@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVP simple example</string>
+    <string name="simple">Simple</string>
+    <string name="mvp">MVP</string>
+</resources>
