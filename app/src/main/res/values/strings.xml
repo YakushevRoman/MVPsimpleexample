@@ -2,4 +2,7 @@
     <string name="app_name">MVP simple example</string>
     <string name="simple">Simple</string>
     <string name="mvp">MVP</string>
+    <string name="add_person">Add person</string>
+    <string name="input_name">Input name</string>
+    <string name="input_last_name">Input last name</string>
 </resources>
