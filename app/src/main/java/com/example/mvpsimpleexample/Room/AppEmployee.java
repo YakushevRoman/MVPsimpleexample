@@ -15,6 +15,7 @@ public class AppEmployee extends Application {
         instance = this;
         dataBaseEmployee = Room
                 .databaseBuilder(this, DataBaseEmployee.class, "my_db.db")
+                .allowMainThreadQueries()
                 .build();
     }
 
