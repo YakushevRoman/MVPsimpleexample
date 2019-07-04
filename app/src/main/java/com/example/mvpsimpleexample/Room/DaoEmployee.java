@@ -12,5 +12,5 @@ public interface DaoEmployee {
     List<Employee> getAllEmployee ();
 
     @Query("Select first_name, last_name from Employee")
-    List
+    List <FirstnameLastName> getFirstNameLastName ();
 }
