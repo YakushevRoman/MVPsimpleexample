@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import com.example.mvpsimpleexample.Room.AppEmployee;
+
 import com.example.mvpsimpleexample.Room.DaoEmployee;
 import com.example.mvpsimpleexample.Room.DataBaseEmployee;
 import com.example.mvpsimpleexample.Room.Employee;
@@ -27,7 +27,7 @@ public class FragmentSimpleActivity extends Fragment {
         View view = inflater.inflate(R.layout.fragment_input_data, container, false);
 
         DataBaseEmployee dataBaseEmployee =AppEmployee
-                .instance
+                .getInstance()
                 .getDataBaseEmployee();
         final DaoEmployee daoEmployee  = dataBaseEmployee
                 .daoEmployee();

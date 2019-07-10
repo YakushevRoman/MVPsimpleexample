@@ -1,11 +1,13 @@
-package com.example.mvpsimpleexample.Room;
+package com.example.mvpsimpleexample;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import com.example.mvpsimpleexample.Room.DataBaseEmployee;
+
 public class AppEmployee extends Application {
 
-    public static AppEmployee instance;
+    private static AppEmployee instance;
 
     private DataBaseEmployee dataBaseEmployee;
 
@@ -14,7 +16,7 @@ public class AppEmployee extends Application {
         super.onCreate();
         instance = this;
         dataBaseEmployee = Room
-                .databaseBuilder(this, DataBaseEmployee.class, "my_db.db")
+                .databaseBuilder(getApplicationContext(), DataBaseEmployee.class, "my_db")
                 .allowMainThreadQueries()
                 .build();
     }

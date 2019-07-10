@@ -38,7 +38,7 @@
 
     <Button
         android:id="@+id/fragment__button_add_person"
-        android:text="Show person"
+        android:text="@string/add_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_text"
@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/fragment__button_show_people"
-        android:text="@string/add_person"
+        android:text="@string/show_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_text"
