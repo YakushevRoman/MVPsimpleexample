@@ -38,12 +38,24 @@
 
     <Button
         android:id="@+id/fragment__button_add_person"
+        android:text="Show person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen_text"
+        android:layout_margin="@dimen/dimen"
+        app:layout_constraintBottom_toTopOf="@id/fragment__button_show_people"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment__editText_last_name" />
+
+    <Button
+        android:id="@+id/fragment__button_show_people"
         android:text="@string/add_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_text"
         android:layout_margin="@dimen/dimen"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fragment__button_add_person"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment__editText_last_name" />
