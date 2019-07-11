@@ -12,52 +12,63 @@
         app:layout_constraintGuide_percent="0.1" />
 
     <EditText
-        android:id="@+id/fragment__editText_name"
+        android:id="@+id/fragment_input_data__editText_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/input_name"
         android:textSize="@dimen/dimen_text"
         android:layout_margin="@dimen/dimen"
-        app:layout_constraintBottom_toTopOf="@+id/fragment__editText_last_name"
+        app:layout_constraintTop_toTopOf="@+id/line_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/line_1"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_input_data__editText_last_name"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
-        android:id="@+id/fragment__editText_last_name"
+        android:id="@+id/fragment_input_data__editText_last_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/input_last_name"
         android:textSize="@dimen/dimen_text"
         android:layout_margin="@dimen/dimen"
-        app:layout_constraintBottom_toTopOf="@+id/fragment__button_add_person"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_input_data__editText_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment__editText_name"/>
+        app:layout_constraintBottom_toTopOf="@+id/fragment_input_data__button_add_person" />
 
     <Button
-        android:id="@+id/fragment__button_add_person"
+        android:id="@+id/fragment_input_data__button_add_person"
         android:text="@string/add_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_text"
         android:layout_margin="@dimen/dimen"
-        app:layout_constraintBottom_toTopOf="@id/fragment__button_show_people"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_input_data__editText_last_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment__editText_last_name" />
+        app:layout_constraintBottom_toTopOf="@id/fragment_input_data__button_show_people"         />
 
     <Button
-        android:id="@+id/fragment__button_show_people"
+        android:id="@+id/fragment_input_data__button_show_people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen"
         android:text="@string/show_person"
+        android:textSize="@dimen/dimen_text"
+        app:layout_constraintBottom_toTopOf="@id/fragment_input_data__recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_input_data__button_add_person" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_input_data__recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/dimen_text"
         android:layout_margin="@dimen/dimen"
-        app:layout_constraintBottom_toTopOf="@id/fragment__button_add_person"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment__editText_last_name" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_input_data__button_show_people">
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

@@ -7,7 +7,7 @@ import com.example.mvpsimpleexample.Room.DataBaseEmployee;
 
 public class AppEmployee extends Application {
 
-    private static AppEmployee instance;
+    public static AppEmployee instance;
 
     private DataBaseEmployee dataBaseEmployee;
 
@@ -16,7 +16,7 @@ public class AppEmployee extends Application {
         super.onCreate();
         instance = this;
         dataBaseEmployee = Room
-                .databaseBuilder(getApplicationContext(), DataBaseEmployee.class, "my_db")
+                .databaseBuilder(getApplicationContext(), DataBaseEmployee.class, "database")
                 .allowMainThreadQueries()
                 .build();
     }

@@ -3,6 +3,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mvpsimpleexample.Recycler.EmployeeAdapter;
 import com.example.mvpsimpleexample.Room.DaoEmployee;
 import com.example.mvpsimpleexample.Room.DataBaseEmployee;
 import com.example.mvpsimpleexample.Room.Employee;
@@ -20,6 +23,14 @@ public class FragmentSimpleActivity extends Fragment {
 
     private EditText rEditTextName;
     private EditText rEditTextLastName;
+    private RecyclerView recyclerView;
+    private EmployeeAdapter rEmployeeAdapter;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -32,9 +43,11 @@ public class FragmentSimpleActivity extends Fragment {
         final DaoEmployee daoEmployee  = dataBaseEmployee
                 .daoEmployee();
 
-        rEditTextName = view.findViewById(R.id.fragment__editText_name);
-        rEditTextLastName = view.findViewById(R.id.fragment__editText_last_name);
-        Button rButtonAddPerson = view.findViewById(R.id.fragment__button_add_person);
+        recyclerView = view.findViewById(R.id.fragment_input_data__recycler_view);
+
+        rEditTextName = view.findViewById(R.id.fragment_input_data__editText_name);
+        rEditTextLastName = view.findViewById(R.id.fragment_input_data__editText_last_name);
+        Button rButtonAddPerson = view.findViewById(R.id.fragment_input_data__button_add_person);
         rButtonAddPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,7 +58,7 @@ public class FragmentSimpleActivity extends Fragment {
             }
         });
 
-        Button rButtonShowPeople = view.findViewById(R.id.fragment__button_show_people);
+        Button rButtonShowPeople = view.findViewById(R.id.fragment_input_data__button_show_people);
         rButtonShowPeople.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +66,9 @@ public class FragmentSimpleActivity extends Fragment {
                 for (Employee employee: employees) {
                     Log.d(TAG, String.format("onClick: id : %s, name: %s, last name : %s ", employee.get_id(), employee.getFirstName(), employee.getLastName()));
                 }
+                rEmployeeAdapter = new EmployeeAdapter(getContext(), employees);
+                recyclerView.setAdapter(rEmployeeAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             }
         });
 
