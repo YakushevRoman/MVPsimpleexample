@@ -1,4 +1,4 @@
-package com.example.mvpsimpleexample;
+package com.example.mvpsimpleexample.Fragments;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.mvpsimpleexample.AppEmployee;
+import com.example.mvpsimpleexample.R;
 import com.example.mvpsimpleexample.Recycler.EmployeeAdapter;
 import com.example.mvpsimpleexample.Room.DaoEmployee;
 import com.example.mvpsimpleexample.Room.DataBaseEmployee;
