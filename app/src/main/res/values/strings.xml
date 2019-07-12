@@ -6,4 +6,5 @@
     <string name="input_name">Input name</string>
     <string name="input_last_name">Input last name</string>
     <string name="show_person">Show person</string>
+    <string name="delete">Delete</string>
 </resources>
