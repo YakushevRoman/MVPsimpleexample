@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mvpsimpleexample.AppEmployee;
+import com.example.mvpsimpleexample.Constants.Constants;
 import com.example.mvpsimpleexample.R;
 import com.example.mvpsimpleexample.Recycler.EmployeeAdapter;
 import com.example.mvpsimpleexample.Room.DaoEmployee;
@@ -22,8 +23,6 @@ import com.example.mvpsimpleexample.Room.Employee;
 import java.util.List;
 
 public class FragmentSimpleActivity extends Fragment {
-    public static final String TAG = "FragmentSimpleActivity";
-
     private EditText rEditTextName;
     private EditText rEditTextLastName;
     private RecyclerView recyclerView;
@@ -92,7 +91,7 @@ public class FragmentSimpleActivity extends Fragment {
         protected Void doInBackground(Void... voids) {
             DaoEmployee daoEmployee = dataBaseEmployee.daoEmployee();
             int n = daoEmployee.delete();
-            Log.d(TAG, String.format("Записей удалено : %s ", n));
+            Log.d(Constants.TAG, String.format("Записей удалено : %s ", n));
             return null;
         }
     }
@@ -114,14 +113,15 @@ public class FragmentSimpleActivity extends Fragment {
            DaoEmployee daoEmployee = dataBaseEmployee.daoEmployee();
            List <Employee> rEmployeeList = daoEmployee.getAllEmployee();
            for (Employee employee: rEmployeeList) {
-               Log.d(TAG, String.format("onClick: id : %s, name: %s, last name : %s ", employee.get_id(), employee.getFirstName(), employee.getLastName()));
+               Log.d(Constants.TAG, String.format("onClick: id : %s, name: %s, last name : %s ", employee.get_id(), employee.getFirstName(), employee.getLastName()));
            }
            return rEmployeeList;
        }
 
        @Override
        protected void onPostExecute(List<Employee> employees) {
-           rEmployeeAdapter = new EmployeeAdapter(getContext(), employees);
+           rEmployeeAdapter = new EmployeeAdapter();
+           rEmployeeAdapter.setData(employees);
            recyclerView.setAdapter(rEmployeeAdapter);
            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
        }

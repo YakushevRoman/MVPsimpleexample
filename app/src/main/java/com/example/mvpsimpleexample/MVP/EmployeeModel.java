@@ -1,35 +1,80 @@
 package com.example.mvpsimpleexample.MVP;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
-import com.example.mvpsimpleexample.AppEmployee;
+import com.example.mvpsimpleexample.Room.DaoEmployee;
 import com.example.mvpsimpleexample.Room.DataBaseEmployee;
 import com.example.mvpsimpleexample.Room.Employee;
-
 import java.util.List;
 
-public class EmployeeModel{
-    private DataBaseEmployee dataBaseEmployee = AppEmployee.instance.getDataBaseEmployee();
+ class EmployeeModel{
+    private final DataBaseEmployee dataBaseEmployee;
+
+     EmployeeModel(DataBaseEmployee dataBaseEmployee) {
+        this.dataBaseEmployee = dataBaseEmployee;
+    }
+
+    interface AddUserCallback{
+         void onAddUser();
+    }
 
     interface ShowUserCallback {
         void onShowUser (List<Employee> employees);
     }
 
-    public void showUsers (ShowUserCallback showUserCallback){
-
+     void showUsers (ShowUserCallback showUserCallback){
+        ShowUsers showUsers = new ShowUsers(showUserCallback);
+        showUsers.execute();
     }
 
+    void addUser (Employee employee, AddUserCallback addUserCallback){
+        AddUser addUser = new AddUser(addUserCallback);
+        addUser.execute(employee);
+    }
+
+    @SuppressLint("StaticFieldLeak")
     private class ShowUsers extends AsyncTask<Void, Void, List<Employee>>{
 
         private final ShowUserCallback showUserCallback;
 
-        public ShowUsers(ShowUserCallback showUserCallback) {
+         ShowUsers(ShowUserCallback showUserCallback) {
             this.showUserCallback = showUserCallback;
         }
 
         @Override
         protected List<Employee> doInBackground(Void... voids) {
+            return dataBaseEmployee.daoEmployee().getAllEmployee();
+        }
+
+        @Override
+        protected void onPostExecute(List<Employee> employees) {
+            if (showUserCallback != null){
+                showUserCallback.onShowUser(employees);
+            }
+        }
+    }
+
+     private class AddUser extends AsyncTask<Employee, Void, Void>{
+
+         private final AddUserCallback addUserCallback;
+
+         private AddUser(AddUserCallback addUserCallback) {
+             this.addUserCallback = addUserCallback;
+         }
+
+         @Override
+        protected Void doInBackground(Employee... employees) {
+            DaoEmployee daoEmployee = dataBaseEmployee.daoEmployee();
+            daoEmployee.insert(employees[0]);
             return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            if (addUserCallback != null){
+                addUserCallback.onAddUser();
+            }
         }
     }
 }
