@@ -23,6 +23,15 @@ import java.util.List;
         void onShowUser (List<Employee> employees);
     }
 
+    interface ClearUsersCallBack {
+         void onClearUsers(Integer integer);
+    }
+
+    void clearUsers (ClearUsersCallBack clearUsersCallBack){
+         ClearUsers clearUsers = new ClearUsers(clearUsersCallBack);
+         clearUsers.execute();
+    }
+
      void showUsers (ShowUserCallback showUserCallback){
         ShowUsers showUsers = new ShowUsers(showUserCallback);
         showUsers.execute();
@@ -55,7 +64,7 @@ import java.util.List;
         }
     }
 
-     private class AddUser extends AsyncTask<Employee, Void, Void>{
+    private class AddUser extends AsyncTask<Employee, Void, Void>{
 
          private final AddUserCallback addUserCallback;
 
@@ -77,4 +86,28 @@ import java.util.List;
             }
         }
     }
+
+    private class ClearUsers extends AsyncTask <Void, Void, Integer >{
+
+         private final ClearUsersCallBack clearUsersCallBack;
+
+        private ClearUsers(ClearUsersCallBack clearUsersCallBack) {
+            this.clearUsersCallBack = clearUsersCallBack;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            DaoEmployee daoEmployee = dataBaseEmployee.daoEmployee();
+            Integer count = daoEmployee.delete();
+            return count;
+        }
+
+        @Override
+        protected void onPostExecute(Integer integer) {
+            if (clearUsersCallBack != null){
+                clearUsersCallBack.onClearUsers(integer);
+            }
+        }
+    }
+
 }

@@ -60,7 +60,7 @@ public class EmployeeFragment extends Fragment {
         rButtonDeletePeople.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                employeePresenter.clear();
             }
         });
 

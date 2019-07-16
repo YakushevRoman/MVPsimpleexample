@@ -1,5 +1,8 @@
 package com.example.mvpsimpleexample.MVP;
 
+import android.util.Log;
+
+import com.example.mvpsimpleexample.Constants.Constants;
 import com.example.mvpsimpleexample.Room.Employee;
 
 import java.util.List;
@@ -39,8 +42,14 @@ public class EmployeePresenter {
         });
     }
 
-    private void addUsers (){
-
+    public void clear (){
+        model.clearUsers(new EmployeeModel.ClearUsersCallBack() {
+            @Override
+            public void onClearUsers(Integer integer) {
+                Log.d(Constants.TAG, "onClearUsers: " + integer);
+                loadUsers();
+            }
+        });
     }
 
     public void employeeDetachView(){
