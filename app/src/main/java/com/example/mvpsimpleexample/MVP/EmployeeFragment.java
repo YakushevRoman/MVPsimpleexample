@@ -23,7 +23,7 @@ import com.example.mvpsimpleexample.Room.Employee;
 
 import java.util.List;
 
-public class EmployeeFragment extends Fragment {
+public class EmployeeFragment extends Fragment implements EmployeeFragmentInterface{
     private EditText rEditTextName;
     private EditText rEditTextLastName;
     private EmployeeAdapter rEmployeeAdapter;
