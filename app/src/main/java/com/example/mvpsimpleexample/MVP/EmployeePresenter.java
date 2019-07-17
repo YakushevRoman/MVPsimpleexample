@@ -7,7 +7,7 @@ import com.example.mvpsimpleexample.Room.Employee;
 
 import java.util.List;
 
-public class EmployeePresenter {
+public class EmployeePresenter implements EmployeePresenterInterface{
     private EmployeeFragment view;
     private final EmployeeModel model;
 

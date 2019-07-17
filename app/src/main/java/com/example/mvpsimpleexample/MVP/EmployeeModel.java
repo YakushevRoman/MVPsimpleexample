@@ -8,7 +8,7 @@ import com.example.mvpsimpleexample.Room.DataBaseEmployee;
 import com.example.mvpsimpleexample.Room.Employee;
 import java.util.List;
 
- class EmployeeModel{
+ class EmployeeModel implements  EmployeeModelInterface{
     private final DataBaseEmployee dataBaseEmployee;
 
      EmployeeModel(DataBaseEmployee dataBaseEmployee) {
